@@ -1,0 +1,218 @@
+/* Fonts and Base Setup */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Raleway:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #2563eb;
+  --accent-color: #f97316;
+  --background-color: #e0f7fa;
+  --card-background: #ffffff;
+  --text-color: #2c3e50;
+  --heading-font: 'Playfair Display', serif;
+  --body-font: 'Raleway', sans-serif;
+}
+
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background: linear-gradient(135deg, #e0f7fa, #e1f5fe);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding-bottom: 50px;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 5px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 800px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+/* Lists */
+ul {
+  padding-left: 40px;
+  margin: 10px 0 25px;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+/* Button Group */
+.button-group {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.button-group a button {
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.button-group a button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.button-group .active {
+  background-color: var(--accent-color) !important;
+}
+
+/* Container for content */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section (Home Page) */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  margin: 40px auto;
+  background: linear-gradient(to right, #e3f2fd, #ffffff);
+  border-radius: 16px;
+  max-width: 900px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 20px auto;
+  max-width: 700px;
+}
+
+.hero .cta-button {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s;
+}
+
+.hero .cta-button:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background-color: #f1f5f9;
+  padding: 20px;
+  color: #555;
+  margin-top: 60px;
+}
+
+/* Forms (Contact Page if needed) */
+form {
+  background-color: var(--card-background);
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#formMsg {
+  margin-top: 15px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button-group a button {
+    display: block;
+    width: 90%;
+    margin: 10px auto;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .container, .hero {
+    padding: 20px;
+  }
+}
