@@ -71,36 +71,27 @@ ul li {
   font-size: 1.05rem;
 }
 
-/* Button Group */
-.button-group {
-  text-align: center;
-  background-color: #ffffff;
-  padding: 20px 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid var(--secondary-color);
-}
-
-.button-group a button {
-  font-size: 1rem;
+/* Button Styling (Universal for button and .btn) */
+button, .btn {
+  display: inline-block;
   padding: 10px 20px;
-  margin: 10px;
-  border-radius: 8px;
+  font-size: 1rem;
   background-color: var(--primary-color);
-  color: #fff;
+  color: #ffffff;
   border: none;
-  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  margin: 10px;
+  text-align: center;
 }
 
-.button-group a button:hover {
+button:hover, .btn:hover {
   background-color: var(--secondary-color);
   transform: scale(1.05);
-}
-
-.button-group .active {
-  background-color: var(--accent-color) !important;
 }
 
 /* Container for content */
@@ -135,22 +126,6 @@ ul li {
   max-width: 700px;
 }
 
-.hero .cta-button {
-  display: inline-block;
-  padding: 12px 30px;
-  font-size: 1rem;
-  background-color: var(--primary-color);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.3s;
-}
-
-.hero .cta-button:hover {
-  background-color: var(--secondary-color);
-  transform: scale(1.05);
-}
-
 /* Footer */
 footer {
   text-align: center;
@@ -160,7 +135,7 @@ footer {
   margin-top: 60px;
 }
 
-/* Forms (Contact Page if needed) */
+/* Forms (Contact page if needed) */
 form {
   background-color: var(--card-background);
   max-width: 600px;
@@ -192,27 +167,32 @@ form textarea {
   color: var(--primary-color);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
+/* Button Group Styling (new) */
+.button-group {
+  text-align: center;
+  margin-bottom: 20px;
+}
 
-  .button-group a button {
-    display: block;
-    width: 90%;
-    margin: 10px auto;
-  }
+.button-group a button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
 
-  .hero h1 {
-    font-size: 2.2rem;
-  }
+.button-group a button.active,
+.button-group a button:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
 
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .container, .hero {
-    padding: 20px;
-  }
+/* Success message styling */
+#formMsg.success {
+  color: green;
 }
