@@ -1,41 +1,107 @@
-CONTACT PAGE 
-<!DOCTYPE html> 
-<html> 
-<head> 
-<title>Contact</title> 
-<link rel="stylesheet" href="styles.css"> 
-</head> 
-<body> 
-<nav class="n"> 
-<a href="home.html"><button>Home</button></a> 
-<a href="about.html"><button>About</button></a> 
-<a href="education.html"><button>Education</button></a> 
-<a href="skill.html"><button>Skill</button></a> 
-<a href="contact.html"><button>Contact</button></a> 
-</nav> 
-<div class="contact-container"> 
-<h2>Contact Me</h2> 
-<ul class="contact-info"> 
-<li><strong>Phone:</strong> 936545442</li> 
-<li><strong>Email:</strong>poojasuresh232@gmail.com</li> 
-<li><strong>LinkedIn:</strong>www.linkedin.com/in/poojasuresh</li> 
-</ul> 
-<br> 
-<form id="contactForm"> 
-    <h2>Contact Me</h2> 
-    <label for="name">Name:</label> 
-    <input type="text" id="name" required> 
-    <label for="email">Email:</label> 
-    <input type="email" id="email" required> 
-    <label for="message">Message:</label> 
-    <textarea id="message" rows="5" required></textarea> 
-    <button type="submit">Send Message</button> 
-    <p id="formMsg"></p> 
-   </form> 
-<script src="script.js"></script> 
-</div> 
-<footer class="footer"> 
-<p class="footer">&copy; 2025 pooja suresh. All rights reserved.</p> 
-</footer> 
-</body> 
-</html> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Buttons -->
+  <div class="button-group">
+    <a href="home.html"><button>Home</button></a>
+    <a href="about.html"><button>About</button></a>
+    <a href="education.html"><button>Education</button></a>
+    <a href="skill.html"><button>Skill</button></a>
+    <a href="contact.html"><button>Contact</button></a>
+  </div>
+
+  <h1>Contact Me</h1>
+
+  <div>
+    <p>Phone: 936545442</p>
+    <p>Email: poojasuresh232@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/poojasuresh" target="_blank">www.linkedin.com/in/poojasuresh</a></p>
+  </div>
+
+  <form id="contactForm">
+    <label for="name"><b>Name:</b></label>
+    <input id="name" name="name" type="text" required>
+
+    <label for="email"><b>Email:</b></label>
+    <input id="email" name="email" type="email" required>
+
+    <label for="message"><b>Message:</b></label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <br><br>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <p id="formMsg" style="font-weight:bold; margin-bottom:15px; display: none;"></p><!-- Success message -->
+
+  <script type="module">
+    // Import firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-firestore.js";
+
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAzxdxQ9y9iEr2fKwmIkq4dmSnUo26jz_E",
+    authDomain: "my-portfolio-5e110.firebaseapp.com",
+    projectId: "my-portfolio-5e110",
+    storageBucket: "my-portfolio-5e110.firebasestorage.app",
+    messagingSenderId: "29515586694",
+    appId: "1:29515586694:web:d35b921d206fe1fe95c507",
+    measurementId: "G-Q7GWWNEDVL"
+
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Handle form submission
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const formMsg = document.getElementById('formMsg');
+
+      if (name && email && message) {
+        try {
+          await addDoc(collection(db, "messages"), {
+            name,
+            email,
+            message,
+            timestamp: serverTimestamp()
+          });
+
+          formMsg.textContent = "Message Sent Successfully.";
+          formMsg.classList.add("success");
+          formMsg.style.display = "block";
+
+          document.getElementById('contactForm').reset();
+
+          setTimeout(() => {
+            formMsg.style.display = "none";
+            formMsg.classList.remove("success");
+          }, 5000);
+        } catch (error) {
+          console.error("Error adding document: ", error);
+          formMsg.textContent = "Failed to send message.";
+          formMsg.style.display = "block";
+          formMsg.classList.remove("success");
+
+          setTimeout(() => {
+            formMsg.style.display = "none";
+          }, 5000);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
